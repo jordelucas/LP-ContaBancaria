@@ -1,10 +1,13 @@
 #include <iostream>
 
+#include "operacoes.h"
+
 void cabecalho();
 
 int main() {
 
     int op = 0;
+    Operacoes operacoes;
     do {
         cabecalho();
         std::cout << "Escolha uma das operações a seguir:\n\n";
