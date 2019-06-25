@@ -186,32 +186,29 @@ void Operacoes::tranferir(){
     std::fstream arq_origem;
     std::fstream arq_destino;
 
-    do{
-        std::cout << "Conta de origem: ";
-        std::cin >> origem;
+    std::cout << "Conta de origem: ";
+    std::cin >> origem;
 
-        arq_origem = visualizarConta(origem, 1);
-        if(arq_origem.fail()){
-            std::cout << "Você buscou por uma conta inexistente.\n";
-        }
-    }while(arq_origem.fail());
+    arq_origem = visualizarConta(origem, 1);
+    if(arq_origem.fail()){
+        std::cout << "A conta informada não existe.\n";
+        return;
+    }
 
     std::cout << "\n";
-    do{
-        std::cout << "Conta de destino: ";
-        std::cin >> destino;
+    std::cout << "Conta de destino: ";
+    std::cin >> destino;
 
-        arq_destino = visualizarConta(destino, 1);
-        if(arq_destino.fail()){
-            std::cout << "Você buscou por uma conta inexistente.\n";
-            continue;
-        }
+    arq_destino = visualizarConta(destino, 1);
+    if(arq_destino.fail()){
+        std::cout << "A conta informada não existe.\n";
+        return;
+    }
 
-        if(origem == destino){
-            std::cout << "A conta de destino não pode ser a mesma que a de origem.\n";
-            continue;
-        }
-    }while(arq_destino.fail() || origem == destino);    
+    if(origem == destino){
+        std::cout << "A conta de destino não pode ser a mesma que a de origem.\n";
+        return;
+    }  
 
 }
 
