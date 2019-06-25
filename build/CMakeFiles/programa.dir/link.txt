@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/programa.dir/src/main.cpp.o CMakeFiles/programa.dir/src/ContaBancaria.cpp.o CMakeFiles/programa.dir/src/Operacoes.cpp.o  -o programa 

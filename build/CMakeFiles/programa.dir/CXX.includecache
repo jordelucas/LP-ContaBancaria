@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/ContaBancaria.h
+string
+-
+
+../include/Operacoes.h
+fstream
+-
+iostream
+-
+cstdlib
+-
+ContaBancaria.h
+../include/ContaBancaria.h
+
+/home/jordeva.silva/Documentos/LP-ContaBancaria/src/Operacoes.cpp
+Operacoes.h
+/home/jordeva.silva/Documentos/LP-ContaBancaria/src/Operacoes.h
+

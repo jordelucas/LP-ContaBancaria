@@ -1,0 +1,5 @@
+/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/rebuild_cache.dir
+/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/edit_cache.dir
+/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/tests.dir
+/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/programa.dir
+/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/test.dir
