@@ -196,6 +196,7 @@ void Operacoes::tranferir(){
         std::cout << "A conta informada não existe.\n";
         return;
     }
+    arq_origem.close();
 
     std::cout << "\n";
     std::cout << "Valor da transação: ";
@@ -218,6 +219,7 @@ void Operacoes::tranferir(){
         std::cout << "A conta informada não existe.\n";
         return;
     }
+    arq_destino.close();
 
     if(origem == destino){
         std::cout << "A conta de destino não pode ser a mesma que a de origem.\n";
@@ -259,7 +261,44 @@ void Operacoes::tranferir(){
 }
 
 void Operacoes::depositar(){
+    unsigned int num_deposito = 0;
+    double valor = 0.0;
+    ContaBancaria contaTemp;
+    std::fstream arq;
 
+    std::cout << "Informe a conta para depósito: ";
+    std::cin >> num_deposito;
+
+    arq = visualizarConta(num_deposito, 1);
+    if(arq.fail()){
+        std::cout << "A conta informada não existe.\n";
+        return;
+    }
+    arq.close();
+
+    std::cout << "\n";
+    std::cout << "Valor da transação: ";
+    std::cin >> valor;
+
+    ContaBancaria * c1 = &contaTemp;
+    carrecarConta(c1, num_deposito);
+
+    std::string nomeArquivo = std::to_string(num_deposito) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    std::fstream arq_NovaConta(nomeArquivo, std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
+
+    arq_NovaConta << c1->getNumero() << "\n";
+    arq_NovaConta << c1->getNome() << "\n";
+    arq_NovaConta << c1->getSaldo()+valor << "\n";
+
+    arq_NovaConta.close();
+
+    std::cout << "\nDeposito realizado!\n";
 }
 
 void Operacoes::sacar(){
