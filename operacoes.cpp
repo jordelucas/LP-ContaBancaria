@@ -30,10 +30,14 @@ void Operacoes::criarConta(){
         std::cout << "Problemas na abertura do arquivo\n";
         return;
     }
-
     contas << conta.getNumero() << "\n";
     contas.close();
 
+    std::fstream arq_NovaConta(std::to_string(conta.getNumero()) + ".txt", std::fstream::out);
+    arq_NovaConta << conta.getNumero() << "\n";
+    arq_NovaConta << conta.getNome() << "\n";
+    arq_NovaConta << conta.getSaldo() << "\n";
+    arq_NovaConta.close();
 }
 
 void Operacoes::listarContas(){

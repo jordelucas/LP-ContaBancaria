@@ -15,7 +15,9 @@ class ContaBancaria {
         void setNome(std::string nome);
         void setNumero(unsigned int numero);
         void setSaldo(double saldo);
+        std::string getNome();
         unsigned int getNumero();
+        double getSaldo();
 };
 
 #endif

@@ -18,3 +18,12 @@ void ContaBancaria::setSaldo(double saldo){
 unsigned int ContaBancaria::getNumero() {
     return numero_;
 }
+
+std::string ContaBancaria::getNome() {
+    return nome_;
+}
+
+double ContaBancaria::getSaldo() {
+    return saldo_;
+}
+
