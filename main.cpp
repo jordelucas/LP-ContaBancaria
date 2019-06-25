@@ -48,6 +48,8 @@ int main() {
             std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 6:
+            operacoes.tranferir();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 7:
             break;

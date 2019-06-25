@@ -181,6 +181,31 @@ void Operacoes::excluirConta(){
 }
 
 void Operacoes::tranferir(){
+    unsigned int origem = 0;
+    unsigned int destino = 0;
+    std::fstream arq_origem;
+    std::fstream arq_destino;
+
+    do{
+        std::cout << "Conta de origem: ";
+        std::cin >> origem;
+
+        arq_origem = visualizarConta(origem, 1);
+        if(arq_origem.fail()){
+            std::cout << "Você buscou por uma conta inexistente.\n";
+        }
+    }while(arq_origem.fail());
+
+    std::cout << "\n";
+    do{
+        std::cout << "Conta de destino: ";
+        std::cin >> destino;
+
+        arq_destino = visualizarConta(destino, 1);
+        if(arq_destino.fail()){
+            std::cout << "Você buscou por uma conta inexistente.\n";
+        }
+    }while(arq_destino.fail());    
 
 }
 
