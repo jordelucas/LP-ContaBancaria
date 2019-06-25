@@ -13,8 +13,11 @@ void Operacoes::criarConta(){
     std::string nome;
     double saldo;
 
-    std::cout << "Nº da conta: ";
-    std::cin >> numero;
+    do{
+        std::cout << "Nº da conta: ";
+        std::cin >> numero;
+    }while(verificarContas(numero));
+    
     std::cout << "Nome do proprietário: ";
     std::cin >> nome;
     std::cout << "Saldo inicial: ";
@@ -69,5 +72,18 @@ void Operacoes::sacar(){
 }
 
 bool Operacoes::verificarContas(unsigned int numero){
-    return true;
+    contas.open("contas.txt", std::fstream::in);
+    if (contas.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+    }
+    int value = 0;
+    while(contas >> value){
+        if(numero == value){
+            std::cout << "\nO número informado está indisponível!\nTente outro número.\n\n";
+            contas.close();
+            return true;
+        }
+    }
+    contas.close();
+    return false;
 }
