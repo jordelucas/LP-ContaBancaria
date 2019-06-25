@@ -135,6 +135,10 @@ void Operacoes::alterarConta(){
 void Operacoes::excluirConta(){
     unsigned int numeroTemp = detalharConta();
 
+    if(numeroTemp == 0){
+        return;
+    }
+
     char op = 'n';
     do{
         std::cout << "\nDeseja realmente excluir esta conta(S/N)? ";
@@ -148,6 +152,30 @@ void Operacoes::excluirConta(){
 
     std::string nomeArquivo = std::to_string(numeroTemp) + ".txt";
     std::remove(nomeArquivo.c_str());
+
+    unsigned int num = 0;
+    contas.open("contas.txt", std::fstream::in);
+    if (contas.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }  
+
+    std::fstream arq_Temp("temp.txt", std::fstream::out);
+    if (contas.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }  
+
+    while(contas >> num){
+        if(num != numeroTemp){
+            arq_Temp << num << "\n";
+        }
+    }
+    contas.close();
+    arq_Temp.close();
+
+    std::remove("contas.txt");
+    std::rename ("temp.txt", "contas.txt");
 
     std::cout << "\nA conta foi excluída!!\n";
 }
