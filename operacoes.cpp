@@ -277,7 +277,7 @@ void Operacoes::depositar(){
     arq.close();
 
     std::cout << "\n";
-    std::cout << "Valor da transação: ";
+    std::cout << "Valor do depósito: ";
     std::cin >> valor;
 
     ContaBancaria * c1 = &contaTemp;
@@ -302,7 +302,49 @@ void Operacoes::depositar(){
 }
 
 void Operacoes::sacar(){
+    unsigned int num_saque = 0;
+    double valor = 0.0;
+    ContaBancaria contaTemp;
+    std::fstream arq;
 
+    std::cout << "Informe a conta para saque: ";
+    std::cin >> num_saque;
+
+    arq = visualizarConta(num_saque, 1);
+    if(arq.fail()){
+        std::cout << "A conta informada não existe.\n";
+        return;
+    }
+    arq.close();
+
+    std::cout << "\n";
+    std::cout << "Valor do saque: ";
+    std::cin >> valor;
+
+    ContaBancaria * c1 = &contaTemp;
+    carrecarConta(c1, num_saque);
+
+    if(c1->getSaldo() < valor){
+        std::cout << "Saldo insuficente.\n";
+        return;
+    }
+
+    std::string nomeArquivo = std::to_string(num_saque) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    std::fstream arq_NovaConta(nomeArquivo, std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
+
+    arq_NovaConta << c1->getNumero() << "\n";
+    arq_NovaConta << c1->getNome() << "\n";
+    arq_NovaConta << c1->getSaldo()-valor << "\n";
+
+    arq_NovaConta.close();
+
+    std::cout << "\nSaque realizado!\n";
 }
 
 bool Operacoes::verificarContas(unsigned int numero){

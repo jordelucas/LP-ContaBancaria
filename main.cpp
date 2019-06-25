@@ -56,6 +56,8 @@ int main() {
             std::this_thread::sleep_for(std::chrono::seconds(5));        
             break;
         case 8:
+            operacoes.sacar();
+            std::this_thread::sleep_for(std::chrono::seconds(5));   
             break;
         case 9:
             break;
