@@ -66,7 +66,10 @@ void Operacoes::detalharConta(){
     int numeroTemp = 0;   
     std::cout << "Informe o número da conta: ";
     std::cin >> numeroTemp;
-    std::fstream arq_Conta = visualizarConta(numeroTemp);
+    
+    std::cout << "\n";
+    
+    std::fstream arq_Conta = visualizarConta(numeroTemp, 1);
     if(arq_Conta.fail()){
         std::cout << "Você buscou por uma conta inexistente.\n";
         return;
@@ -80,7 +83,6 @@ void Operacoes::detalharConta(){
     arq_Conta >> nome;
     arq_Conta >> saldo;
 
-    std::cout << "\n";
     std::cout << "Proprietário(a): " << nome << "\n";
     std::cout << "Nº da conta: " << numero << "\n";
     std::cout << "Saldo: " << saldo << "\n";
@@ -88,6 +90,18 @@ void Operacoes::detalharConta(){
 }
 
 void Operacoes::alterarConta(){
+    int numeroTemp = 0;   
+    std::cout << "Informe o número da conta: ";
+    std::cin >> numeroTemp;
+    
+    std::cout << "\n";
+    
+    std::fstream arq_Conta = visualizarConta(numeroTemp, 1);
+    if(arq_Conta.fail()){
+        std::cout << "Você buscou por uma conta inexistente.\n";
+        return;
+    }
+
 
 }
 
@@ -124,7 +138,15 @@ bool Operacoes::verificarContas(unsigned int numero){
     return false;
 }
 
-std::fstream Operacoes::visualizarConta(unsigned int numero){
-    std::fstream arq_Conta(std::to_string(numero) + ".txt", std::fstream::in);
+std::fstream Operacoes::visualizarConta(unsigned int numero, int op){
+    std::fstream arq_Conta;
+    if(op == 1){
+        arq_Conta.open(std::to_string(numero) + ".txt", std::fstream::in);
+    }
+
+    if(op == 2){
+        arq_Conta.open(std::to_string(numero) + ".txt", std::fstream::out);
+    }
+
     return arq_Conta;
 }
