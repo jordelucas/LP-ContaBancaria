@@ -29,6 +29,7 @@ int main() {
         switch (op) {
         case 1:
             operacoes.criarConta();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 2:
             operacoes.listarContas();
@@ -39,6 +40,8 @@ int main() {
             std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 4:
+            operacoes.alterarConta();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 5:
             break;

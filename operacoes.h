@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <iostream> 
+#include <cstdlib> 
 #include "contaBancaria.h"
 
 class Operacoes {

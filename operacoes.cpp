@@ -45,6 +45,8 @@ void Operacoes::criarConta(){
     arq_NovaConta << conta.getNome() << "\n";
     arq_NovaConta << conta.getSaldo() << "\n";
     arq_NovaConta.close();
+
+    std::cout << "\nConta Criada!!\n";
 }
 
 void Operacoes::listarContas(){
@@ -90,7 +92,9 @@ void Operacoes::detalharConta(){
 }
 
 void Operacoes::alterarConta(){
-    int numeroTemp = 0;   
+    unsigned int numeroTemp = 0;   
+    std::string nomeTemp;   
+    double saldoTemp = 0.0;   
     std::cout << "Informe o número da conta: ";
     std::cin >> numeroTemp;
     
@@ -101,8 +105,29 @@ void Operacoes::alterarConta(){
         std::cout << "Você buscou por uma conta inexistente.\n";
         return;
     }
+    arq_Conta.close();
 
+    std::cout << "Informe o novo nome: ";
+    std::cin >> nomeTemp;
+    std::cout << "Informe o novo saldo: ";
+    std::cin >> saldoTemp;
 
+    std::string nomeArquivo = std::to_string(numeroTemp) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    std::fstream arq_NovaConta(std::to_string(numeroTemp) + ".txt", std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
+
+    arq_NovaConta << numeroTemp << "\n";
+    arq_NovaConta << nomeTemp << "\n";
+    arq_NovaConta << saldoTemp << "\n";
+
+    arq_NovaConta.close();
+
+    std::cout << "\nConta Atualizada!!\n";
 }
 
 void Operacoes::excluirConta(){
