@@ -1,4 +1,5 @@
 #include <iostream>
+#include <thread>
 
 #include "operacoes.h"
 #include "contaBancaria.h"
@@ -30,6 +31,8 @@ int main() {
             operacoes.criarConta();
             break;
         case 2:
+            operacoes.listarContas();
+            std::this_thread::sleep_for(std::chrono::seconds(3));
             break;
         case 3:
             break;

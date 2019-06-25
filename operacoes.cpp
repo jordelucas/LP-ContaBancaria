@@ -44,7 +44,18 @@ void Operacoes::criarConta(){
 }
 
 void Operacoes::listarContas(){
+    contas.open("contas.txt", std::fstream::in);
+    if (contas.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }    
 
+    int numeroTemp = 0;
+    std::cout << "\n";
+    while(contas >> numeroTemp){
+        std::cout << numeroTemp << "\n";
+    }
+    std::cout << "\n";
 }
 
 void Operacoes::detalharConta(){
@@ -76,9 +87,9 @@ bool Operacoes::verificarContas(unsigned int numero){
     if (contas.fail()) {
         std::cout << "Problemas na abertura do arquivo\n";
     }
-    int value = 0;
-    while(contas >> value){
-        if(numero == value){
+    int numeroTemp = 0;
+    while(contas >> numeroTemp){
+        if(numero == numeroTemp){
             std::cout << "\nO número informado está indisponível!\nTente outro número.\n\n";
             contas.close();
             return true;
