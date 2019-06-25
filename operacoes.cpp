@@ -183,6 +183,8 @@ void Operacoes::excluirConta(){
 void Operacoes::tranferir(){
     unsigned int origem = 0;
     unsigned int destino = 0;
+    double valor = 0.0;
+    ContaBancaria contaTemp;
     std::fstream arq_origem;
     std::fstream arq_destino;
 
@@ -192,6 +194,18 @@ void Operacoes::tranferir(){
     arq_origem = visualizarConta(origem, 1);
     if(arq_origem.fail()){
         std::cout << "A conta informada não existe.\n";
+        return;
+    }
+
+    std::cout << "\n";
+    std::cout << "Valor da transação: ";
+    std::cin >> valor;
+
+    ContaBancaria * c1 = &contaTemp;
+    carrecarConta(c1, origem);
+
+    if(c1->getSaldo() < valor){
+        std::cout << "Saldo insuficente.\n";
         return;
     }
 
@@ -248,4 +262,20 @@ std::fstream Operacoes::visualizarConta(unsigned int numero, int op){
     }
 
     return arq_Conta;
+}
+
+void Operacoes::carrecarConta(ContaBancaria * conta, unsigned int numero){
+    std::fstream arq = visualizarConta(numero, 1);
+
+    unsigned int numeroTemp = 0;   
+    std::string nomeTemp;   
+    double saldoTemp = 0.0;   
+
+    arq >> numeroTemp;
+    arq >> nomeTemp;
+    arq >> saldoTemp;
+
+    conta->setNumero(numeroTemp);
+    conta->setNome(nomeTemp);
+    conta->setSaldo(saldoTemp);
 }

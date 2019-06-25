@@ -20,6 +20,7 @@ class Operacoes {
         void sacar();
         bool verificarContas(unsigned int numero);
         std::fstream visualizarConta(unsigned int numero, int op);
+        void carrecarConta(ContaBancaria * conta, unsigned int numero);
 
     private:
         std::fstream contas;
