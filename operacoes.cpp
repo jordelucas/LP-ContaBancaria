@@ -18,7 +18,7 @@ void Operacoes::criarConta(){
         std::cin >> numero;
     }while(verificarContas(numero));
     
-    std::cout << "Nome do proprietário: ";
+    std::cout << "Nome do(a) proprietário(a): ";
     std::cin >> nome;
     std::cout << "Saldo inicial: ";
     std::cin >> saldo;
@@ -37,6 +37,10 @@ void Operacoes::criarConta(){
     contas.close();
 
     std::fstream arq_NovaConta(std::to_string(conta.getNumero()) + ".txt", std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
     arq_NovaConta << conta.getNumero() << "\n";
     arq_NovaConta << conta.getNome() << "\n";
     arq_NovaConta << conta.getSaldo() << "\n";
@@ -59,7 +63,28 @@ void Operacoes::listarContas(){
 }
 
 void Operacoes::detalharConta(){
+    int numeroTemp = 0;   
+    std::cout << "Informe o número da conta: ";
+    std::cin >> numeroTemp;
+    std::fstream arq_Conta = visualizarConta(numeroTemp);
+    if(arq_Conta.fail()){
+        std::cout << "Você buscou por uma conta inexistente.\n";
+        return;
+    }
 
+    unsigned int numero = 0;
+    std::string nome;
+    double saldo = 0.0;
+
+    arq_Conta >> numero;
+    arq_Conta >> nome;
+    arq_Conta >> saldo;
+
+    std::cout << "\n";
+    std::cout << "Proprietário(a): " << nome << "\n";
+    std::cout << "Nº da conta: " << numero << "\n";
+    std::cout << "Saldo: " << saldo << "\n";
+    arq_Conta.close();
 }
 
 void Operacoes::alterarConta(){
@@ -97,4 +122,9 @@ bool Operacoes::verificarContas(unsigned int numero){
     }
     contas.close();
     return false;
+}
+
+std::fstream Operacoes::visualizarConta(unsigned int numero){
+    std::fstream arq_Conta(std::to_string(numero) + ".txt", std::fstream::in);
+    return arq_Conta;
 }

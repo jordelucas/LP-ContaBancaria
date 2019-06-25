@@ -18,6 +18,7 @@ class Operacoes {
         void depositar();
         void sacar();
         bool verificarContas(unsigned int numero);
+        std::fstream visualizarConta(unsigned int numero);
 
     private:
         std::fstream contas;

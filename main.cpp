@@ -32,9 +32,11 @@ int main() {
             break;
         case 2:
             operacoes.listarContas();
-            std::this_thread::sleep_for(std::chrono::seconds(3));
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 3:
+            operacoes.detalharConta();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 4:
             break;
