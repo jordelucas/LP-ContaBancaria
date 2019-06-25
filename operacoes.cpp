@@ -117,7 +117,7 @@ void Operacoes::alterarConta(){
     std::string nomeArquivo = std::to_string(numeroTemp) + ".txt";
     std::remove(nomeArquivo.c_str());
 
-    std::fstream arq_NovaConta(std::to_string(numeroTemp) + ".txt", std::fstream::out);
+    std::fstream arq_NovaConta(nomeArquivo, std::fstream::out);
     if (arq_NovaConta.fail()) {
         std::cout << "Problemas na abertura do arquivo\n";
         return;
@@ -223,6 +223,38 @@ void Operacoes::tranferir(){
         std::cout << "A conta de destino não pode ser a mesma que a de origem.\n";
         return;
     }  
+
+    std::string nomeArquivo = std::to_string(origem) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    std::fstream arq_NovaConta(nomeArquivo, std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
+
+    arq_NovaConta << c1->getNumero() << "\n";
+    arq_NovaConta << c1->getNome() << "\n";
+    arq_NovaConta << c1->getSaldo()-valor << "\n";
+
+    arq_NovaConta.close();
+
+    carrecarConta(c1, destino);
+
+    nomeArquivo = std::to_string(destino) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    arq_NovaConta.open(nomeArquivo, std::fstream::out);
+    if (arq_NovaConta.fail()) {
+        std::cout << "Problemas na abertura do arquivo\n";
+        return;
+    }
+
+    arq_NovaConta << c1->getNumero() << "\n";
+    arq_NovaConta << c1->getNome() << "\n";
+    arq_NovaConta << c1->getSaldo()+valor << "\n";
+
+    arq_NovaConta.close();
 
 }
 
