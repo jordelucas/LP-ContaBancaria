@@ -204,8 +204,14 @@ void Operacoes::tranferir(){
         arq_destino = visualizarConta(destino, 1);
         if(arq_destino.fail()){
             std::cout << "Você buscou por uma conta inexistente.\n";
+            continue;
         }
-    }while(arq_destino.fail());    
+
+        if(origem == destino){
+            std::cout << "A conta de destino não pode ser a mesma que a de origem.\n";
+            continue;
+        }
+    }while(arq_destino.fail() || origem == destino);    
 
 }
 
