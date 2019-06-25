@@ -10,7 +10,12 @@ class ContaBancaria {
         double saldo_;
 
     public:
-        ContaBancaria(std::string nome, unsigned int numero, double saldo);
+        ContaBancaria();
+        
+        void setNome(std::string nome);
+        void setNumero(unsigned int numero);
+        void setSaldo(double saldo);
+        unsigned int getNumero();
 };
 
 #endif

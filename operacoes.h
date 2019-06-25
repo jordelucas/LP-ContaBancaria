@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <iostream> 
+#include "contaBancaria.h"
 
 class Operacoes {
     public:
@@ -16,6 +17,7 @@ class Operacoes {
         void tranferir();
         void depositar();
         void sacar();
+        bool verificarContas(unsigned int numero);
 
     private:
         std::fstream contas;

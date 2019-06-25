@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "operacoes.h"
+#include "contaBancaria.h"
 
 void cabecalho();
 
@@ -26,6 +27,7 @@ int main() {
 
         switch (op) {
         case 1:
+            operacoes.criarConta();
             break;
         case 2:
             break;
