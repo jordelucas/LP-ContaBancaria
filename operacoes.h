@@ -6,12 +6,16 @@
 #include <cstdlib> 
 #include "contaBancaria.h"
 
+/**
+ * Classe com funções que simulam as operações realizadas no banco  
+ * @author Jordeva Lucas
+ */
+
 class Operacoes {
     public:
         Operacoes();
-
         void criarConta();
-        void listarContas();
+        void listarContas();  
         unsigned int detalharConta();
         void alterarConta();
         void excluirConta();

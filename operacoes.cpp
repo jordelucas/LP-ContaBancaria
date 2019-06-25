@@ -1,5 +1,8 @@
 #include "operacoes.h"
-
+        
+/**
+ * Implementa método construtor, onde é criado o o arquivo que contém o número das contas bancárias
+ */
 Operacoes::Operacoes(){
     contas.open("contas.txt", std::fstream::app);
     if (contas.fail()) {
@@ -8,6 +11,11 @@ Operacoes::Operacoes(){
     contas.close();
 }
 
+/**
+ * Implementa função que cria uma nova conta bancária a partir dos dados fornecidos pelo usuário, 
+sendo necessário cumprimento de decritérios, como o fornecer o número de uma conta disponível.
+As informações são guardadas em arquivos.
+ */
 void Operacoes::criarConta(){
     unsigned int numero;
     std::string nome;
@@ -49,6 +57,11 @@ void Operacoes::criarConta(){
     std::cout << "\nConta Criada!!\n";
 }
 
+/**
+ * Implementa função que lista a numeração das contas criadas. 
+É feita a leitura do arquivo que guarda as numerações. 
+ */
+
 void Operacoes::listarContas(){
     contas.open("contas.txt", std::fstream::in);
     if (contas.fail()) {
@@ -64,6 +77,12 @@ void Operacoes::listarContas(){
     std::cout << "\n";
 }
 
+
+/**
+ * Implementa função que detalha os dados da conta bancária após ser solicitado o número da conta.
+É feita a leitura do arquivo que consta os dados da respectiva conta 
+ * @return O número da conta que foi detalhada
+ */  
 unsigned int Operacoes::detalharConta(){
     unsigned int numeroTemp = 0;   
     std::cout << "Informe o número da conta: ";
@@ -93,6 +112,11 @@ unsigned int Operacoes::detalharConta(){
     return numeroTemp;
 }
 
+/**
+ * Implementa função que altera os dados cadastrados de uma conta bancária. 
+É solicitado o número da conta desejada e são oferecidos para alteraçã os campos de Nome e Saldo.
+Após fornecer os dados, o arquivo anterior é excluído e um novo é criado com o mesmo nome, mas com os novos dados.
+ */
 void Operacoes::alterarConta(){
     unsigned int numeroTemp = 0;   
     std::string nomeTemp;   
@@ -132,6 +156,11 @@ void Operacoes::alterarConta(){
     std::cout << "\nConta Atualizada!!\n";
 }
 
+/**
+ * Implementa função que exclui conta bancária. Para tal, é reutilizado o bloco de código que detalha uma conta.
+Após ser exibida, é conferido se o usuário deseja prosseguir. Caso positivo, o respectivo arquivo com os dados da conta
+é excluído e a numeração é removida da lista.
+ */
 void Operacoes::excluirConta(){
     unsigned int numeroTemp = detalharConta();
 
@@ -180,6 +209,11 @@ void Operacoes::excluirConta(){
     std::cout << "\nA conta foi excluída!!\n";
 }
 
+/**
+ * Implementa função que realiza transação entre contas bancárias, simulando uma transferência. 
+É feira verificação se as contas de origem e destino existem e se o saldo da conta de origem é suficiente 
+para o valor solicitado. Caso positivo, o valor é debitado do saldo da conta de origem e acrescentado na de destino. 
+ */
 void Operacoes::tranferir(){
     unsigned int origem = 0;
     unsigned int destino = 0;
@@ -260,6 +294,11 @@ void Operacoes::tranferir(){
 
 }
 
+
+/**
+ * Implementa função que realiza incremento no saldo de uma conta bancária, simulando um depósito. 
+É solicitado o número da conta que será depositada e o valor. Os dados são alterados no respectivo arquivo. 
+ */
 void Operacoes::depositar(){
     unsigned int num_deposito = 0;
     double valor = 0.0;
@@ -301,6 +340,11 @@ void Operacoes::depositar(){
     std::cout << "\nDeposito realizado!\n";
 }
 
+
+/**
+ * Implementa função que decrementa o saldo de uma conta bancária, simulando um saque 
+É solicitado o número da conta que será realizado o saque e o valor. Os dados são alterados no respectivo arquivo. 
+ */
 void Operacoes::sacar(){
     unsigned int num_saque = 0;
     double valor = 0.0;
@@ -347,6 +391,11 @@ void Operacoes::sacar(){
     std::cout << "\nSaque realizado!\n";
 }
 
+/**
+ * Declara função responsável por percorrer o arquivo de contas cadastradas, verificando se o valor passado está nele ou não
+ * @param numero Nº da conta bancária para verificação
+ * @return True se a conta existir ou False se a conta ainda não existir
+ */  
 bool Operacoes::verificarContas(unsigned int numero){
     contas.open("contas.txt", std::fstream::in);
     if (contas.fail()) {
@@ -364,6 +413,12 @@ bool Operacoes::verificarContas(unsigned int numero){
     return false;
 }
 
+/**
+ * Declara função que retorna a conta solicitada
+ * @param numero Nº da conta bancária para verificação
+ * @param op Determina se o arquivo a serretornado será para escrita ou leitura
+ * @return O arquivo que contém os dados da conta bancária solicitada
+ */ 
 std::fstream Operacoes::visualizarConta(unsigned int numero, int op){
     std::fstream arq_Conta;
     if(op == 1){
@@ -377,6 +432,11 @@ std::fstream Operacoes::visualizarConta(unsigned int numero, int op){
     return arq_Conta;
 }
 
+/**
+ * Declara função responsável por carregar informações a partir de um arquivo em uma instância de um objeto do tipo ContaBancaria
+ *  @param conta Ponteiro referente ao objeto que receberá os valores
+ *  @param numero Nº da conta bancária para verificação
+ */  
 void Operacoes::carrecarConta(ContaBancaria * conta, unsigned int numero){
     std::fstream arq = visualizarConta(numero, 1);
 

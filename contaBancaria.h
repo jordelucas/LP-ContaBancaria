@@ -3,6 +3,12 @@
 
 #include <string>
 
+/**
+ * Classe do objeto ContaBancaria, contendo como atributos: Nome, Saldo e Número, além das funções que 
+auxiliam no funcionamento da Classe Operacoes 
+ * @author Jordeva Lucas
+ */
+
 class ContaBancaria {
     private:
         std::string nome_;

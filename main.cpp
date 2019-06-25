@@ -4,7 +4,15 @@
 #include "operacoes.h"
 #include "contaBancaria.h"
 
+/** 
+ * Declara função que exibe cabeçalho
+ */
 void cabecalho();
+
+/**
+ * Classe principal, onde é exibida a lista de opções a serem realiadas com a classe Operações
+ * @author Jordeva Lucas
+ */ 
 
 int main() {
 
@@ -59,15 +67,16 @@ int main() {
             operacoes.sacar();
             std::this_thread::sleep_for(std::chrono::seconds(5));   
             break;
-        case 9:
-            break;
-        
         default:
             break;
         }
     }while(op != 9);
     return 0;
 }
+
+/**
+ * Implementação da função cabeçalho, que limpa o console e identifica o sistema
+ */ 
 
 void cabecalho() {
     system("clear");
