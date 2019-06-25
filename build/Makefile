@@ -183,6 +183,7 @@ src/Operacoes.o: src/Operacoes.cpp.o
 
 # target to build an object file
 src/Operacoes.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Operacoes.cpp.o
 	$(MAKE) -f CMakeFiles/programa.dir/build.make CMakeFiles/programa.dir/src/Operacoes.cpp.o
 .PHONY : src/Operacoes.cpp.o
 
@@ -192,6 +193,7 @@ src/Operacoes.i: src/Operacoes.cpp.i
 
 # target to preprocess a source file
 src/Operacoes.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Operacoes.cpp.i
 	$(MAKE) -f CMakeFiles/programa.dir/build.make CMakeFiles/programa.dir/src/Operacoes.cpp.i
 .PHONY : src/Operacoes.cpp.i
 
@@ -201,6 +203,7 @@ src/Operacoes.s: src/Operacoes.cpp.s
 
 # target to generate assembly for a file
 src/Operacoes.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Operacoes.cpp.s
 	$(MAKE) -f CMakeFiles/programa.dir/build.make CMakeFiles/programa.dir/src/Operacoes.cpp.s
 .PHONY : src/Operacoes.cpp.s
 

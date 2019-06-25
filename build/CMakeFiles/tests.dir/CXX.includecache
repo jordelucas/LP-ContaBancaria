@@ -10,6 +10,16 @@
 string
 -
 
+../include/Operacoes.h
+fstream
+-
+iostream
+-
+cstdlib
+-
+ContaBancaria.h
+../include/ContaBancaria.h
+
 ../include/catch.hpp
 TargetConditionals.h
 -
@@ -474,13 +484,11 @@ algorithm
 cassert
 -
 
-/home/jordeva.silva/Documentos/LP-ContaBancaria/src/ContaBancaria.cpp
-ContaBancaria.h
-/home/jordeva.silva/Documentos/LP-ContaBancaria/src/ContaBancaria.h
-
 /home/jordeva.silva/Documentos/LP-ContaBancaria/tests/all.cpp
 catch.hpp
 /home/jordeva.silva/Documentos/LP-ContaBancaria/tests/catch.hpp
 ContaBancaria.h
 /home/jordeva.silva/Documentos/LP-ContaBancaria/tests/ContaBancaria.h
+Operacoes.h
+/home/jordeva.silva/Documentos/LP-ContaBancaria/tests/Operacoes.h
 

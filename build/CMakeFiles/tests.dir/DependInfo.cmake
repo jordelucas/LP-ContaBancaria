@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jordeva.silva/Documentos/LP-ContaBancaria/src/ContaBancaria.cpp" "/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/tests.dir/src/ContaBancaria.cpp.o"
+  "/home/jordeva.silva/Documentos/LP-ContaBancaria/src/Operacoes.cpp" "/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/tests.dir/src/Operacoes.cpp.o"
   "/home/jordeva.silva/Documentos/LP-ContaBancaria/tests/all.cpp" "/home/jordeva.silva/Documentos/LP-ContaBancaria/build/CMakeFiles/tests.dir/tests/all.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

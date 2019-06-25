@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/tests.dir/tests/all.cpp.o CMakeFiles/tests.dir/src/ContaBancaria.cpp.o  -o tests 
+/usr/bin/c++    -rdynamic CMakeFiles/tests.dir/tests/all.cpp.o CMakeFiles/tests.dir/src/ContaBancaria.cpp.o CMakeFiles/tests.dir/src/Operacoes.cpp.o  -o tests 

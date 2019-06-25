@@ -15,7 +15,7 @@ target_include_directories(Operacoes INTERFACE include/)
 
 ADD_EXECUTABLE(programa src/main.cpp src/ContaBancaria.cpp src/Operacoes.cpp)
 
-ADD_EXECUTABLE(tests tests/all.cpp src/ContaBancaria.cpp)
+ADD_EXECUTABLE(tests tests/all.cpp src/ContaBancaria.cpp src/Operacoes.cpp)
 TARGET_LINK_LIBRARIES(tests Catch)
 ENABLE_TESTING()
 ADD_TEST(NAME ContaBancariaTest COMMAND tests)

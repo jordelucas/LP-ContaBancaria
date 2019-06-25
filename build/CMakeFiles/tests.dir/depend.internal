@@ -4,7 +4,12 @@
 CMakeFiles/tests.dir/src/ContaBancaria.cpp.o
  ../include/ContaBancaria.h
  /home/jordeva.silva/Documentos/LP-ContaBancaria/src/ContaBancaria.cpp
+CMakeFiles/tests.dir/src/Operacoes.cpp.o
+ ../include/ContaBancaria.h
+ ../include/Operacoes.h
+ /home/jordeva.silva/Documentos/LP-ContaBancaria/src/Operacoes.cpp
 CMakeFiles/tests.dir/tests/all.cpp.o
  ../include/ContaBancaria.h
+ ../include/Operacoes.h
  ../include/catch.hpp
  /home/jordeva.silva/Documentos/LP-ContaBancaria/tests/all.cpp
