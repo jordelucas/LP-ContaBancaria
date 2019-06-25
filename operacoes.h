@@ -12,7 +12,7 @@ class Operacoes {
 
         void criarConta();
         void listarContas();
-        void detalharConta();
+        unsigned int detalharConta();
         void alterarConta();
         void excluirConta();
         void tranferir();

@@ -44,6 +44,8 @@ int main() {
             std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 5:
+            operacoes.excluirConta();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             break;
         case 6:
             break;

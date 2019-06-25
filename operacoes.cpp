@@ -64,8 +64,8 @@ void Operacoes::listarContas(){
     std::cout << "\n";
 }
 
-void Operacoes::detalharConta(){
-    int numeroTemp = 0;   
+unsigned int Operacoes::detalharConta(){
+    unsigned int numeroTemp = 0;   
     std::cout << "Informe o número da conta: ";
     std::cin >> numeroTemp;
     
@@ -74,7 +74,7 @@ void Operacoes::detalharConta(){
     std::fstream arq_Conta = visualizarConta(numeroTemp, 1);
     if(arq_Conta.fail()){
         std::cout << "Você buscou por uma conta inexistente.\n";
-        return;
+        return 0;
     }
 
     unsigned int numero = 0;
@@ -89,6 +89,8 @@ void Operacoes::detalharConta(){
     std::cout << "Nº da conta: " << numero << "\n";
     std::cout << "Saldo: " << saldo << "\n";
     arq_Conta.close();
+
+    return numeroTemp;
 }
 
 void Operacoes::alterarConta(){
@@ -131,7 +133,23 @@ void Operacoes::alterarConta(){
 }
 
 void Operacoes::excluirConta(){
+    unsigned int numeroTemp = detalharConta();
 
+    char op = 'n';
+    do{
+        std::cout << "\nDeseja realmente excluir esta conta(S/N)? ";
+        std::cin >> op;
+    }while(op != 'N' && op != 'S');
+
+    if(op == 'N'){
+        std::cout << "\nRetornando ao menu principal...\n";
+        return;
+    }
+
+    std::string nomeArquivo = std::to_string(numeroTemp) + ".txt";
+    std::remove(nomeArquivo.c_str());
+
+    std::cout << "\nA conta foi excluída!!\n";
 }
 
 void Operacoes::tranferir(){
